@@ -21,17 +21,6 @@ public class PersonController {
     public List <Person> getPeople () {
         return personService.getPeople();
     }    
- 
-    
-//    @GetMapping ("/person/{id}")
-//    public PersonDTO getPerson (@PathVariable Integer id) {
-//        Person person = personService.getPerson(id);
-//        PersonDTO personDTO = new PersonDTO( person.getId(), person.getName()+ person.getLastName(), 
-//                    person.getAdress(),person.getBirthdate(),person.getCountry(), person.getPhone());   
-//        
-//        return personDTO;
-//    }   
-  
     
     @PostMapping ("/person")
     public void createPerson (@RequestBody Person person) {

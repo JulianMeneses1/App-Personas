@@ -19,16 +19,6 @@ public class PersonService implements IPersonService{
         return personRepository.findAll();
     }
 
-//    @Override
-//    public Person getPerson(Integer id) {
-//        return personRepository.findById(id).orElse(null);
-//    }
-//
-//    @Override
-//    public Person getPersonByName(String name) {
-//        return personRepository.findByName(name);
-//    }
-
     @Override
     public void editPerson(Person person, String name, String lastName, Date birthday, String phone, String country, String adress) {
                 

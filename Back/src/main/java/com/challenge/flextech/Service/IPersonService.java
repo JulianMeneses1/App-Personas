@@ -10,10 +10,6 @@ import java.util.List;
 public interface IPersonService {
     public List<Person> getPeople ();
     
-//    public Person getPerson(Integer id); 
-//    
-//    public Person getPersonByName (String name);
-    
     public void editPerson(Person person, String name, String lastName, Date birthday, String phone, 
                                 String country, String adress);
     
