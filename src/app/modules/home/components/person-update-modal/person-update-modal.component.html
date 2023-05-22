@@ -1,0 +1,163 @@
+<div 
+class="modal fade modal-lg"      
+id="person-update-modal-{{person.id}}" tabindex="-1" 
+aria-labelledby="textoModalLabel"
+aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered" role="document" (click)="resetForm()">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h3 class="modal-title textoModal" id="textoModalLabel">Editar Persona</h3>                        
+            </div>
+            <div class="modal-body">                      
+                
+                <form (ngSubmit)="onSubmit()" [formGroup]="editPersonForm">
+                    <div class="mb-3">
+                        <div class="d-flex align-items-baseline modal-body-div">
+                            <label for="user" class="form-label modalLabel ">Nombre</label>
+                            <input 
+                                type="text"
+                                class="form-control modalInput" 
+                                placeholder="Ingrese un nombre"
+                                formControlName="name"
+                                [ngClass]="{'is-invalid':invalidForm && editPersonForm.get('name')?.errors?.['required']}"
+                                (click)="hideErrorMessage()"
+                                maxlength="20">
+                        </div>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('name')?.errors?.['required']">
+                            Este campo es obligatorio
+                        </p> 
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-baseline modal-body-div">
+                            <label for="user" class="form-label modalLabel ">Apellido</label>
+                            <input 
+                                type="text"
+                                class="form-control modalInput" 
+                                placeholder="Ingrese un apellido"
+                                formControlName="lastName"
+                                [ngClass]="{'is-invalid':invalidForm && editPersonForm.get('lastName')?.errors?.['required']}"
+                                (click)="hideErrorMessage()"
+                                maxlength="20">
+                        </div>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('lastName')?.errors?.['required']">
+                            Este campo es obligatorio
+                        </p> 
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-baseline modal-body-div">
+                            <label for="user" class="form-label modalLabel ">Fecha de nacimiento</label>
+                            <input 
+                                type="date"
+                                class="form-control modalInput"
+                                min="1930-01-01"
+                                [max]=actualStrDate                              
+                                formControlName="birthday"
+                                [ngClass]="{'is-invalid':invalidForm && editPersonForm.get('birthday')?.invalid}"
+                                (click)="hideErrorMessage()">
+                        </div>                       
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('birthday')?.invalid && editPersonForm.get('birthday')?.touched">
+                            La fecha ingresada no es válida.
+                        </p>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('birthday')?.errors?.['required']">
+                            Este campo es obligatorio.
+                        </p> 
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-baseline modal-body-div">
+                            <label for="user" class="form-label modalLabel ">Teléfono</label>
+                            <input 
+                                type="text"
+                                class="form-control modalInput" 
+                                placeholder="Ingrese un teléfono"
+                                formControlName="phone"
+                                [ngClass]="{'is-invalid':invalidForm && editPersonForm.get('phone')?.invalid}"
+                                (click)="hideErrorMessage()"
+                                maxlength="19">
+                        </div>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('phone')?.errors?.['required']">
+                            Este campo es obligatorio
+                        </p>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('phone')?.errors?.['pattern']">
+                            El teléfono debe tener el siguiente formato: +543 (351) 452-2345
+                        </p> 
+                    </div> 
+                    <div class="mb-3">
+                        <div class="d-flex align-items-baseline modal-body-div">
+                            <label for="user" class="form-label modalLabel ">Dirección</label>
+                            <input 
+                                type="text"
+                                class="form-control modalInput" 
+                                placeholder="Ingrese una dirección"
+                                formControlName="adress"
+                                [ngClass]="{'is-invalid':invalidForm && editPersonForm.get('adress')?.invalid}"
+                                (click)="hideErrorMessage()"
+                                maxlength="30">
+                        </div>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('adress')?.errors?.['required']">
+                            Este campo es obligatorio
+                        </p>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('adress')?.errors?.['pattern']">
+                            La dirección ingresada no es válida. Ejemplo: 2184 Calletano Roy
+                        </p>  
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-baseline modal-body-div">
+                            <label for="user" class="form-label modalLabel ">País</label>
+                            <input 
+                                type="text"
+                                class="form-control modalInput" 
+                                placeholder="Ingrese un país"
+                                formControlName="country"
+                                [ngClass]="{'is-invalid':invalidForm && editPersonForm.get('country')?.invalid}"
+                                (click)="hideErrorMessage()"
+                                maxlength="20">
+                        </div>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('country')?.errors?.['required']">
+                            Este campo es obligatorio
+                        </p>
+                        <p 
+                            class="text-danger" 
+                            *ngIf="invalidForm && editPersonForm.get('country')?.errors?.['pattern']">
+                            El país sólo puede incluir letras.
+                        </p>
+
+                    </div>                           
+                    <div class="modal-footer d-flex justify-content-between pt-2 pe-0 pb-0 ps-0">
+                        <button 
+                            type="button" 
+                            class="btn btn-danger"                            
+                            data-bs-dismiss="modal"
+                            >
+                            Cerrar
+                        </button>
+                        <button 
+                            type="submit" 
+                            class="btn btn-primary">
+                            Aceptar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>                  
+

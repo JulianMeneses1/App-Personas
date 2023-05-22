@@ -1,0 +1,159 @@
+<section class="d-flex align-items-center justify-content-center">
+    <div class=" my-3 container">
+        <form (ngSubmit)="onSubmit()" [formGroup]="createPersonForm">
+            <h2>Añadir Persona</h2>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 my-1">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input                       
+                        class="form-control"    
+                        type="text" 
+                        placeholder="Ingrese un nombre"
+                        (click)="hideErrorMessage()"
+                        formControlName="name"
+                        maxlength="20"
+                        [ngClass]="{'is-invalid':invalidForm && createPersonForm.get('name')?.errors?.['required']}"
+                        >
+                    <p 
+                        class="text-danger m-0" 
+                        *ngIf="invalidForm && createPersonForm.get('name')?.errors?.['required']">
+                        Este campo es obligatorio
+                    </p> 
+                </div>
+                <div class="col-lg-6 col-md-12 my-1">
+                    <label for="lastName" class="form-label">Apellido</label>
+                    <input                       
+                        class="form-control"    
+                        type="text" 
+                        placeholder="Ingrese un apellido"
+                        (click)="hideErrorMessage()"
+                        formControlName="lastName"
+                        maxlength="20"
+                        [ngClass]="{'is-invalid':invalidForm && createPersonForm.get('lastName')?.errors?.['required']}"
+                        >
+                    <p 
+                        class="text-danger m-0" 
+                        *ngIf="invalidForm && createPersonForm.get('lastName')?.errors?.['required']">
+                        Este campo es obligatorio
+                    </p> 
+                </div>
+                <div class="col-lg-6 col-md-12 my-1">
+                    <label for="birthday" class="form-label">Fecha de nacimiento</label>
+                    <input 
+                        type="date"
+                        class="form-control"
+                        min="1930-01-01"
+                        [max]=actualStrDate                              
+                        formControlName="birthday"
+                        [ngClass]="{'is-invalid':invalidForm && createPersonForm.get('birthday')?.invalid}"
+                        (click)="hideErrorMessage()">
+                    <p 
+                        class="text-danger" 
+                        *ngIf="invalidForm && createPersonForm.get('birthday')?.invalid && createPersonForm.get('birthday')?.touched">
+                        La fecha ingresada no es válida.
+                    </p>
+                    <p 
+                        class="text-danger" 
+                        *ngIf="invalidForm && createPersonForm.get('birthday')?.errors?.['required']">
+                        Este campo es obligatorio.
+                    </p>      
+                </div>
+                <div class="col-lg-6 col-md-12 my-1">
+                    <label for="phone" class="form-label">Teléfono</label>
+                    <input                       
+                        class="form-control"    
+                        type="text" 
+                        placeholder="Ingrese un teléfono"
+                        (click)="hideErrorMessage()"
+                        formControlName="phone"
+                        maxlength="19"
+                        [ngClass]="{'is-invalid':invalidForm && createPersonForm.get('phone')?.invalid}"
+                        >
+                    <p 
+                        class="text-danger m-0" 
+                        *ngIf="invalidForm && createPersonForm.get('phone')?.errors?.['required']">
+                        Este campo es obligatorio
+                    </p>
+                    <p 
+                        class="text-danger" 
+                        *ngIf="invalidForm && createPersonForm.get('phone')?.errors?.['pattern']">
+                        El teléfono debe tener el siguiente formato: +543 (351) 452-2345
+                    </p> 
+                </div>            
+                <div class="col-lg-6 col-md-12 my-1">
+                    <label for="adress" class="form-label ">Dirección</label>
+                    <input 
+                        type="text"
+                        class="form-control" 
+                        placeholder="Ingrese una dirección"
+                        formControlName="adress"
+                        [ngClass]="{'is-invalid':invalidForm && createPersonForm.get('adress')?.invalid}"
+                        (click)="hideErrorMessage()"
+                        maxlength="50">
+                    <p 
+                        class="text-danger" 
+                        *ngIf="invalidForm && createPersonForm.get('adress')?.errors?.['required']">
+                        Este campo es obligatorio
+                    </p>
+                    <p 
+                        class="text-danger" 
+                        *ngIf="invalidForm && createPersonForm.get('adress')?.errors?.['pattern']">
+                        La dirección ingresada no es válida. Ejemplo: 2184 Calletano Roy
+                    </p>                  
+                </div>
+                <div class="col-lg-6 col-md-12 my-1">
+                    <label for="country" class="form-label">País</label>               
+                    <input 
+                        type="text"
+                        class="form-control" 
+                        placeholder="Ingrese un país"
+                        formControlName="country"
+                        [ngClass]="{'is-invalid':invalidForm && createPersonForm.get('birthday')?.invalid}"
+                        (click)="hideErrorMessage()"
+                        maxlength="20">
+                    <p 
+                        class="text-danger m-0" 
+                        *ngIf="invalidForm && createPersonForm.get('country')?.errors?.['required']">
+                        Este campo es obligatorio
+                    </p>
+                </div>                
+            </div>           
+            <div class="d-flex justify-content-center gap-5">
+                    <button id="submitBtn" type="submit" class="btn btn-primary">Enviar</button>
+                    <button id="resetBtn" type="button" class="btn btn-danger" (click)="resetForm()">Limpiar Formulario</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- MODAL CONFIRMACIÓN -->
+
+<div 
+class="modal fade modal"      
+id="confirmation-modal" tabindex="-1" 
+aria-labelledby="textoModalLabel"
+aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <fa-icon
+                        id="icono-confirmacion"                        
+                        [icon]="faCircleCheck">
+                    </fa-icon>
+                </div>
+                <p *ngIf="person" style="color:black; text-align: center; margin: 0px 25px;">La persona {{person.name}} {{person.lastName}} ha sido creada exitosamente</p>
+            </div>                    
+            <div class="modal-footer d-flex justify-content-center p-2">               
+                <button 
+                    type="button" 
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    >
+                    Aceptar
+                </button>
+            </div>        
+        </div>  
+    </div>
+</div> 

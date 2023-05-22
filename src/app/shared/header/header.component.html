@@ -1,0 +1,64 @@
+<header> 
+    <nav class="navbar navbar-expand-xl fixed-top p-1" id="menu" appScrollMenu>        
+        <div class="container-fluid">
+            <a class="navbar-brand ms-3">
+                <img id="logo" src="../../../assets/Logo Flex Tech.jfif">                
+            </a>
+            <button 
+                class="navbar-toggler me-1" 
+                type="button" 
+                data-bs-toggle="modal" 
+                data-bs-target="#collapsedMenu"              
+                >
+                <span> 
+                    <fa-icon *ngIf="visibleScroll" [icon]="faBars"></fa-icon>
+                    
+                </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-start">
+                <ul class="navbar-nav mb-0 mt-2 align-items-center">                            
+                    <li class="nav-item">
+                        <a class="nav-link link" routerLink="home" >Inicio</a>
+                    </li>                
+                    <li class="nav-item">
+                        <a class="nav-link link" routerLink="add-person" >Añadir Persona</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link link" routerLink="statistics" >Estadísticas</a>
+                    </li>                 
+                </ul>                    
+            </div>
+        </div>        
+    </nav>      
+</header> 
+
+<!-- MODAL COLLAPSED MENU -->
+
+<div class="modal fade" id="collapsedMenu" tabindex="-1">    
+    <div class="modal-dialog">
+      <div class="modal-content">        
+        <div class="modal-header d-flex justify-content-end me-3 mt-2">
+            <fa-icon [icon]="faX" data-bs-toggle="modal" 
+            data-bs-target="#collapsedMenu" ></fa-icon>            
+        </div>        
+        <div class="modal-body">            
+            <ul id="nav-colapsado" class="navbar-nav">                            
+                <li class="nav-item">
+                    <a class="nav-link link"  routerLink="home" data-bs-toggle="modal" 
+                    data-bs-target="#collapsedMenu">Inicio </a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link link" routerLink="add-person" data-bs-toggle="modal" 
+                    data-bs-target="#collapsedMenu">Añadir Persona</a>
+                </li>  
+                <li class="nav-item">
+                    <a class="nav-link link" routerLink="statistics" data-bs-toggle="modal" 
+                    data-bs-target="#collapsedMenu">Estadísticas</a>
+                </li> 
+            </ul>              
+        </div>        
+      </div>
+    </div>
+  </div>
+
+

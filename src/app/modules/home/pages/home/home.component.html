@@ -1,0 +1,74 @@
+<section>        
+    <div class="container-fluid overflow-auto">        
+        <h1>Lista de Personas</h1>       
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>País</th>
+                        <th class="text-center align-middle">Eliminar</th>
+                        <th class="text-center align-middle">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let person of people">
+                        <td class="align-middle">
+                            {{person.name}}
+                        </td>
+                        <td class="align-middle">
+                            {{person.lastName}}
+                        </td>
+                        <td class="align-middle">
+                            {{person.birthday | date : "dd/MM/yyyy" }}  
+                        </td>
+                        <td class="align-middle">
+                            {{person.phone}}
+                        </td>
+                        <td class="align-middle">
+                            {{person.adress}}
+                        </td>
+                        <td class="align-middle">
+                            {{person.country}}
+                        </td>
+                        <td class="text-center align-middle">
+                            <button>
+                                <fa-icon 
+                                    [icon]="faX"                           
+                                    id="delete-icon"
+                                    data-bs-toggle="modal" 
+                                    [attr.data-bs-target]="'#person-delete-modal-' + person.id">
+                                </fa-icon>
+                            </button>
+                        </td>
+                        <td class="text-center align-middle">
+                            <button>
+                                <fa-icon
+                                    [icon]="faEdit"                           
+                                    id="update-icon"
+                                    data-bs-toggle="modal" 
+                                    [attr.data-bs-target]="'#person-update-modal-' + person.id">
+                                </fa-icon>
+                            </button>
+                        </td>
+                    </tr>    
+                </tbody>
+            </table>
+        </div>        
+    </div>    
+</section>
+
+<app-person-delete-modal
+    *ngFor="let person of people"
+    [person]="person"
+    (onDeletePerson)="deletePerson($event)">
+</app-person-delete-modal>
+<app-person-update-modal
+    *ngFor="let person of people"
+    [person]="person"
+    (onUpdatePerson)="updatePerson($event)">
+</app-person-update-modal>

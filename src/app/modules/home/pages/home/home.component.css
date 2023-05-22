@@ -1,0 +1,29 @@
+
+fa-icon {
+    font-size: 1.3em;
+}
+
+#delete-icon {
+    color:red;
+}
+
+#update-icon {
+    color:rgb(36, 95, 184);
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+button:hover {
+    transform: scale(1.2)
+}
+
+.container-fluid {
+    max-height: calc(100vh - 146px) !important;
+}
+
+#loading-container {
+    margin: 50%;
+}
