@@ -77,7 +77,11 @@ Great, now you only need to install the libraries that are used in this project.
 ```
 :warning: Remember that all the data is loaded from the Back End server, so you need to start the Back End server first to be able to see the data and successfully run the app. For more information visit the back end [repository](https://github.com/JulianMeneses1/Portafolio-BackEnd-AP)
 
-## 4. :wave: Collaboration
+## 4. :information_source: API Documentation Swagger
+***
+Check the full documentation of the API in this [link](https://app-personas-production.up.railway.app/swagger-ui/index.html)
+
+## 5. :wave: Collaboration
 ***
 Feel free to make any suggestion that you think can help improve the quality of the project! :grinning:
 
