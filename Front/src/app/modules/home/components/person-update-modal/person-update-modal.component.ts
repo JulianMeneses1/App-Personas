@@ -1,7 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PersonModel } from 'src/app/core/models/Person.interface';
+import { specialValidators, phonePattern, adressPattern, countryPattern } from 'src/app/validations/validations';
 
 declare var $: any;    
 
@@ -14,24 +15,20 @@ export class PersonUpdateModalComponent implements OnInit {
 
   editPersonForm!: FormGroup;
   invalidForm: boolean = false;
-  actualDate!: Date;
-  actualStrDate!: string;
+  actualDate: Date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+  actualStrDate: string = this.pd.transform(this.actualDate,"yyyy-MM-dd") || '';
 
-  phonePattern:string="[+]\\d{2,3}\\s\\(\\d{3}\\)\\s\\d{3}\\-\\d{4}";
-  adressPattern:string="\\d*\\w+\\s\\w+(\\s\\w+)*"
-  countryPattern:string="\\w+(\\s?\\w+)*"
+  phonePattern = phonePattern;
+  adressPattern = adressPattern;
+  countryPattern = countryPattern;
 
-  @Input() person!: PersonModel;  
-
+  @Input() person!: PersonModel;
   @Output() onUpdatePerson: EventEmitter <PersonModel> = new EventEmitter ()
 
   constructor(private formBuilder: FormBuilder, private pd:DatePipe) 
     {}
 
   ngOnInit ():void {
-    
-    this.actualDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-    this.actualStrDate = this.pd.transform(this.actualDate,"yyyy-MM-dd") || '';
 
     this.editPersonForm = this.formBuilder.group({
       id: [this.person.id],
@@ -40,17 +37,15 @@ export class PersonUpdateModalComponent implements OnInit {
       adress: [this.person.adress,[Validators.required,Validators.pattern(this.adressPattern)]],
       phone: [this.person.phone,[Validators.required, Validators.pattern(this.phonePattern)]],
       birthday: [this.pd.transform(this.person.birthday,"yyyy-MM-dd"),[specialValidators.validateDate, Validators.required]],
-      country: [this.person.country,[Validators.required]],
+      country: [this.person.country,[Validators.required,Validators.pattern(this.countryPattern)]],
     })    
   }
   
   resetForm () {                                                           
     $("#person-update-modal-"+this.person.id).on('hidden.bs.modal',  () => {         
-          
       this.editPersonForm.patchValue(this.person);
       this.editPersonForm.get('birthday')?.setValue(this.pd.transform(this.person.birthday,"yyyy-MM-dd"));
-      this.hideErrorMessage(); 
-      console.log(this.invalidForm)        
+      this.hideErrorMessage();   
       })     
   }
 
@@ -69,16 +64,14 @@ export class PersonUpdateModalComponent implements OnInit {
   } 
 }
 
-class specialValidators {
-  public static validateDate(element:FormControl) {
-    let text = element.value;
-    let invalid: boolean = false;
-    let aux:Date = new Date(text);
-
-    let selectedDate:Date = new Date(aux.getUTCFullYear(),aux.getUTCMonth(),aux.getUTCDate());
-    invalid = (selectedDate > new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()) ||
-               selectedDate < new Date("01-01-1930"));
-
-    return invalid ? {invalid:true}:null;
-  }
-}
+// class specialValidators {
+//   public static validateDate(element:FormControl) {
+//     let text = element.value;
+//     let invalid: boolean = false;
+//     let aux:Date = new Date(text);
+//     let selectedDate:Date = new Date(aux.getUTCFullYear(),aux.getUTCMonth(),aux.getUTCDate());
+//     invalid = (selectedDate > new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()) ||
+//                selectedDate < new Date("01-01-1930"));
+//     return invalid ? {invalid:true}:null;
+//   }
+// }

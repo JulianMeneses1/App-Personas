@@ -4,7 +4,7 @@
             <h2>Añadir Persona</h2>
             <div class="row">
                 <div class="col-lg-6 col-md-12 my-1">
-                    <label for="name" class="form-label">Nombre</label>
+                    <label class="form-label">Nombre</label>
                     <input                       
                         class="form-control"    
                         type="text" 
@@ -21,7 +21,7 @@
                     </p> 
                 </div>
                 <div class="col-lg-6 col-md-12 my-1">
-                    <label for="lastName" class="form-label">Apellido</label>
+                    <label  class="form-label">Apellido</label>
                     <input                       
                         class="form-control"    
                         type="text" 
@@ -38,7 +38,7 @@
                     </p> 
                 </div>
                 <div class="col-lg-6 col-md-12 my-1">
-                    <label for="birthday" class="form-label">Fecha de nacimiento</label>
+                    <label class="form-label">Fecha de nacimiento</label>
                     <input 
                         type="date"
                         class="form-control"
@@ -49,7 +49,7 @@
                         (click)="hideErrorMessage()">
                     <p 
                         class="text-danger" 
-                        *ngIf="invalidForm && createPersonForm.get('birthday')?.invalid && createPersonForm.get('birthday')?.touched">
+                        *ngIf="invalidForm && createPersonForm.get('birthday')?.invalid && createPersonForm.get('birthday')?.dirty">
                         La fecha ingresada no es válida.
                     </p>
                     <p 
@@ -59,7 +59,7 @@
                     </p>      
                 </div>
                 <div class="col-lg-6 col-md-12 my-1">
-                    <label for="phone" class="form-label">Teléfono</label>
+                    <label  class="form-label">Teléfono</label>
                     <input                       
                         class="form-control"    
                         type="text" 
@@ -81,7 +81,7 @@
                     </p> 
                 </div>            
                 <div class="col-lg-6 col-md-12 my-1">
-                    <label for="adress" class="form-label ">Dirección</label>
+                    <label class="form-label ">Dirección</label>
                     <input 
                         type="text"
                         class="form-control" 
@@ -98,17 +98,17 @@
                     <p 
                         class="text-danger" 
                         *ngIf="invalidForm && createPersonForm.get('adress')?.errors?.['pattern']">
-                        La dirección ingresada no es válida. Ejemplo: 2184 Calletano Roy
+                        La dirección ingresada no es válida. Ejemplo: 2184 Calletano o Calletano 2000
                     </p>                  
                 </div>
                 <div class="col-lg-6 col-md-12 my-1">
-                    <label for="country" class="form-label">País</label>               
+                    <label class="form-label">País</label>               
                     <input 
                         type="text"
                         class="form-control" 
                         placeholder="Ingrese un país"
                         formControlName="country"
-                        [ngClass]="{'is-invalid':invalidForm && createPersonForm.get('birthday')?.invalid}"
+                        [ngClass]="{'is-invalid':invalidForm && createPersonForm.get('country')?.invalid}"
                         (click)="hideErrorMessage()"
                         maxlength="20">
                     <p 
@@ -116,7 +116,12 @@
                         *ngIf="invalidForm && createPersonForm.get('country')?.errors?.['required']">
                         Este campo es obligatorio
                     </p>
-                </div>                
+                    <p 
+                        class="text-danger" 
+                        *ngIf="invalidForm && createPersonForm.get('country')?.errors?.['pattern']">
+                        El país sólo puede incluir letras.
+                    </p>
+                </div>        
             </div>           
             <div class="d-flex justify-content-center gap-5">
                     <button id="submitBtn" type="submit" class="btn btn-primary">Enviar</button>

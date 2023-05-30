@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,9 @@ import { CreatePersonModule } from './modules/create-person/create-person.module
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { StatisticsModule } from './modules/statistics/statistics.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MenuScrollDirective } from './shared/header/directives/menu-scroll.directive';
+
 
 
 
@@ -17,7 +20,8 @@ import { StatisticsModule } from './modules/statistics/statistics.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MenuScrollDirective
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,8 @@ import { StatisticsModule } from './modules/statistics/statistics.module';
     StatisticsModule,
     CreatePersonModule,
     FontAwesomeModule,
-    HttpClientModule    
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

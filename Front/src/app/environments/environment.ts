@@ -1,3 +1,3 @@
 export const environment = {
-    url: "http://localhost:8080/"
+    url: "https://backapppersonas-production-109d.up.railway.app/"
 }

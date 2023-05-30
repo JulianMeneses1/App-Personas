@@ -1,19 +1,16 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
 
-@Directive({ 
-    selector: '[appScrollMenu]'  
+@Directive({
+  selector: '[appMenuScroll]'
 })
-export class ScrollMenuDirective {
+export class MenuScrollDirective {
 
-  constructor() { }  
+  constructor() { }
 
-  lastYScroll:number = window.scrollY
-
+  lastYScroll:number = window.scrollY 
  
   @HostBinding('class.hide-menu') toggleHide!:boolean
   @HostBinding('class.animation-menu') toggleAnimation!:boolean
-
-
 
   @HostListener('window:scroll') onScroll (){ 
    
@@ -27,3 +24,4 @@ export class ScrollMenuDirective {
     this.lastYScroll = window.scrollY
   }
 }
+

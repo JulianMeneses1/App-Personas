@@ -1,36 +1,19 @@
-#boton_cv:hover, #boton_login:hover, #boton_logout:hover{
-    background-color: rgb(62, 63, 65) !important;
-    transform: scale(1.10) !important;       
-}
 
-#boton_cv{
-    padding:8px;
-    color:lightblue; 
-    background-color: black;
-    border: solid 2px lightblue;
-    border-radius: 10%;
-    margin-right: 50px
-}
-
-.animacion-menu{    
+.animation-menu{    
     transform: translateY(0px);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
             
 }
 
-.ocultar-menu{
-    transform: translateY(-78px)
+.hide-menu{
+    transform: translateY(-78px);
+    transition: transform 0.4s ease;
 }
 
 #menu {
-    background-color: #453745;
+    background-color: #6b686a;
       
 }
-
-
-
-
-
 
 #logo {
    height:3em;
@@ -41,6 +24,7 @@
     transform: scale(1.15);
     
 }
+
 
 .link {
     font-size: 15px;
@@ -79,17 +63,6 @@ fa-icon{
     
 }
 
-#logo2 {
-    height:3em;
-    position: absolute;
-    margin-left: 0px
- }
-
- #logo2:hover{
-     filter:drop-shadow(0px 0px 10px lightblue);
-     transform: scale(1.10)   
- }
-
 .modal-body, .modal-header {
     background-color: #161d2b;
     border: none;
@@ -114,28 +87,10 @@ fa-icon{
     border-bottom: 1px solid lightblue;
 }
 
-#nav-colapsado li:last-child:hover{
-    border-bottom: 0px !important;
-}
-
     
 .modal-dialog button {
     font-size: 19px;
     margin-right: 0px !important;
-}
-
-.modal-dialog #boton_login, .modal-dialog #boton_logout {
-    margin-top: 20px; 
-    
-}
-
-#nav-colapsado li:last-child{
-    padding-bottom: 5px;
-}
-
-#contenedor-login-logout-colapsado{
-    
-    padding-bottom: 13px;
 }
 
 nav {

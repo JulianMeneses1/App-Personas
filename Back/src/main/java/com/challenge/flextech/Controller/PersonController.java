@@ -23,13 +23,15 @@ public class PersonController {
     }    
     
     @PostMapping ("/person")
-    public void createPerson (@RequestBody Person person) {
+    public Person createPerson (@RequestBody Person person) {
         personService.createPerson(person);
+          return person;
     }
     
     @PostMapping ("/people")
-    public void createPeople (@RequestBody List <Person> people) {
+    public List <Person> createPeople (@RequestBody List <Person> people) {
         personService.createPeople(people);
+        return people;         
     }
     
     @PutMapping ("/person/{id}")

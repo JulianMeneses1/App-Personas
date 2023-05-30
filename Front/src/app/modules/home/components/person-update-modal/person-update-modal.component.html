@@ -14,8 +14,9 @@ aria-hidden="true"
                 <form (ngSubmit)="onSubmit()" [formGroup]="editPersonForm">
                     <div class="mb-3">
                         <div class="d-flex align-items-baseline modal-body-div">
-                            <label for="user" class="form-label modalLabel ">Nombre</label>
+                            <label for="name" class="form-label modalLabel ">Nombre</label>
                             <input 
+                                id="name"
                                 type="text"
                                 class="form-control modalInput" 
                                 placeholder="Ingrese un nombre"
@@ -32,8 +33,9 @@ aria-hidden="true"
                     </div>
                     <div class="mb-3">
                         <div class="d-flex align-items-baseline modal-body-div">
-                            <label for="user" class="form-label modalLabel ">Apellido</label>
+                            <label for="lastName" class="form-label modalLabel ">Apellido</label>
                             <input 
+                                id="lastName"
                                 type="text"
                                 class="form-control modalInput" 
                                 placeholder="Ingrese un apellido"
@@ -50,8 +52,9 @@ aria-hidden="true"
                     </div>
                     <div class="mb-3">
                         <div class="d-flex align-items-baseline modal-body-div">
-                            <label for="user" class="form-label modalLabel ">Fecha de nacimiento</label>
+                            <label for="birthday" class="form-label modalLabel ">Fecha de nacimiento</label>
                             <input 
+                                id="birthday"
                                 type="date"
                                 class="form-control modalInput"
                                 min="1930-01-01"
@@ -62,7 +65,7 @@ aria-hidden="true"
                         </div>                       
                         <p 
                             class="text-danger" 
-                            *ngIf="invalidForm && editPersonForm.get('birthday')?.invalid && editPersonForm.get('birthday')?.touched">
+                            *ngIf="invalidForm && editPersonForm.get('birthday')?.invalid && editPersonForm.get('birthday')?.dirty">
                             La fecha ingresada no es válida.
                         </p>
                         <p 
@@ -73,8 +76,9 @@ aria-hidden="true"
                     </div>
                     <div class="mb-3">
                         <div class="d-flex align-items-baseline modal-body-div">
-                            <label for="user" class="form-label modalLabel ">Teléfono</label>
+                            <label for="phone" class="form-label modalLabel ">Teléfono</label>
                             <input 
+                                id="phone"
                                 type="text"
                                 class="form-control modalInput" 
                                 placeholder="Ingrese un teléfono"
@@ -96,8 +100,9 @@ aria-hidden="true"
                     </div> 
                     <div class="mb-3">
                         <div class="d-flex align-items-baseline modal-body-div">
-                            <label for="user" class="form-label modalLabel ">Dirección</label>
-                            <input 
+                            <label for="adress" class="form-label modalLabel ">Dirección</label>
+                            <input
+                                id="adress" 
                                 type="text"
                                 class="form-control modalInput" 
                                 placeholder="Ingrese una dirección"
@@ -114,13 +119,14 @@ aria-hidden="true"
                         <p 
                             class="text-danger" 
                             *ngIf="invalidForm && editPersonForm.get('adress')?.errors?.['pattern']">
-                            La dirección ingresada no es válida. Ejemplo: 2184 Calletano Roy
+                            La dirección ingresada no es válida. Ejemplo: 2184 Calletano o Calletano 2000
                         </p>  
                     </div>
                     <div class="mb-3">
                         <div class="d-flex align-items-baseline modal-body-div">
-                            <label for="user" class="form-label modalLabel ">País</label>
+                            <label for="country" class="form-label modalLabel ">País</label>
                             <input 
+                                id="country"
                                 type="text"
                                 class="form-control modalInput" 
                                 placeholder="Ingrese un país"

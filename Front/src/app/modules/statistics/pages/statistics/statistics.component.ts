@@ -16,18 +16,18 @@ export class StatisticsComponent implements OnInit{
 
   constructor ( private peopleService: PeopleService) {
     this.peopleSubscription = this.peopleService.onUpdatePeople().subscribe(
-      value => this.people = value    
+      value => {
+        this.people = value  
+        this.generateChar(this.countPeopleByCountries(this.people))   
+      }  
     )   
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('people') == null) { 
-      this.peopleService.setStorage();
-      this.generateChar(this.countPeopleByCountries(this.people));
-    } else {  
-      this.people = JSON.parse(sessionStorage.getItem('people')!);
-      this.generateChar(this.countPeopleByCountries(this.people));
-    }    
+
+    sessionStorage.getItem('people')
+    ? this.getStorage()
+    : this.peopleService.setStorage() 
   }     
 
   generateChar (peopleByCountry: any[]) { 
@@ -55,7 +55,6 @@ export class StatisticsComponent implements OnInit{
   }     
 
   countPeopleByCountries(people:any[]):any[] { 
-
     const peopleByCountry: any = {};  
 
     for (const person of people) {
@@ -71,5 +70,10 @@ export class StatisticsComponent implements OnInit{
       return { country, totalQuantity: peopleByCountry[country] };
     });
     return result;    
-  }  
+  } 
+  
+  getStorage () {
+    this.people = JSON.parse(sessionStorage.getItem('people')!);
+    this.generateChar(this.countPeopleByCountries(this.people));    
+  }
 }
