@@ -1,7 +1,7 @@
-D:\Estudios\Programación\Proyectos\App-Personas\Back\src\main\java\com\challenge\flextech\Security\CorsConfig.java
-D:\Estudios\Programación\Proyectos\App-Personas\Back\src\main\java\com\challenge\flextech\Model\Person.java
-D:\Estudios\Programación\Proyectos\App-Personas\Back\src\main\java\com\challenge\flextech\Service\PersonService.java
-D:\Estudios\Programación\Proyectos\App-Personas\Back\src\main\java\com\challenge\flextech\Service\IPersonService.java
-D:\Estudios\Programación\Proyectos\App-Personas\Back\src\main\java\com\challenge\flextech\Controller\PersonController.java
-D:\Estudios\Programación\Proyectos\App-Personas\Back\src\main\java\com\challenge\flextech\Repository\PersonRepository.java
-D:\Estudios\Programación\Proyectos\App-Personas\Back\src\main\java\com\challenge\flextech\FlextechApplication.java
+D:\Estudios\Programación\Proyectos\Personales\App-Personas\Back\src\main\java\com\challenge\flextech\Repository\PersonRepository.java
+D:\Estudios\Programación\Proyectos\Personales\App-Personas\Back\src\main\java\com\challenge\flextech\Service\PersonService.java
+D:\Estudios\Programación\Proyectos\Personales\App-Personas\Back\src\main\java\com\challenge\flextech\Service\IPersonService.java
+D:\Estudios\Programación\Proyectos\Personales\App-Personas\Back\src\main\java\com\challenge\flextech\Controller\PersonController.java
+D:\Estudios\Programación\Proyectos\Personales\App-Personas\Back\src\main\java\com\challenge\flextech\FlextechApplication.java
+D:\Estudios\Programación\Proyectos\Personales\App-Personas\Back\src\main\java\com\challenge\flextech\Model\Person.java
+D:\Estudios\Programación\Proyectos\Personales\App-Personas\Back\src\main\java\com\challenge\flextech\Security\CorsConfig.java
