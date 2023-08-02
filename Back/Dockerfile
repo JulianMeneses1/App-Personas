@@ -1,8 +1,8 @@
 FROM amazoncorretto:17
 
-MAINTAINER julianmeneses
+MAINTAINER JM
 
-COPY AppPersonas-0.0.1-SNAPSHOT.jar app.jar
+COPY target/AppPersonas-0.0.1-SNAPSHOT.jar app-personas.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]
 
