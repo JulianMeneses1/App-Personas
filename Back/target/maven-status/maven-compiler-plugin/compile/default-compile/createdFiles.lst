@@ -1,0 +1,8 @@
+com\challenge\flextech\Service\PersonService.class
+com\challenge\flextech\FlextechApplication.class
+com\challenge\flextech\Controller\PersonController.class
+com\challenge\flextech\Repository\PersonRepository.class
+com\challenge\flextech\Service\IPersonService.class
+com\challenge\flextech\Security\CorsConfig$1.class
+com\challenge\flextech\Security\CorsConfig.class
+com\challenge\flextech\Model\Person.class
