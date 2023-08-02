@@ -1,4 +1,4 @@
-FROM amazoncorretto:17
+FROM amazoncorretto:11-alpine-jdk
 
 MAINTAINER JM
 
